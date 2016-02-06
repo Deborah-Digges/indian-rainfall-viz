@@ -12,6 +12,10 @@ var map = d3.select("#chart").append("svg:svg")
 var india = map.append("svg:g")
 .attr("id", "india");
 
+var yearlyDataDict = {};
+var maxAnnualRainfall;
+var minAnnualRainfall;
+
 function drawMap() {
     d3.json("data/states.json", function (json) {
         india.selectAll("path")
@@ -25,8 +29,25 @@ function drawMap() {
     proj.translate([-1240, 720]);
 }
 
-function processData(rainfallData) {
+function computeYearlyIndex(rainfallData) {
     console.log(rainfallData);
+    for(var i=0; i<rainfallData.length; ++i) {
+        record = rainfallData[i];
+        year = record["YEAR"];
+        state = record["SD_Name"];
+        annualRainfall = record["ANNUAL"];
+
+        if(!yearlyDataDict.hasOwnProperty(year)) {
+            yearlyDataDict[year] = {};
+        }
+        yearlyDataDict[year][state] = parseFloat(annualRainfall);
+    }
+
+}
+function processData(rainfallData) {
+    computeYearlyIndex(rainfallData);
+    minAnnualRainfall = d3.min(rainfallData, function(d) {return +d.ANNUAL; });
+    maxAnnualRainfall = d3.max(rainfallData, function(d) {return +d.ANNUAL; });
 }
 
 function loadData() {
