@@ -13,6 +13,8 @@ var india = map.append("svg:g")
 .attr("id", "india");
 
 var yearlyDataDict = {};
+var yearEvents = { "1960" : "Something awful happened"};
+
 var maxAnnualRainfall;
 var minAnnualRainfall;
 var startYear;
@@ -162,6 +164,10 @@ function updateMap(year) {
         totalRain = computeRainfall(d, year);
         return colorScale(totalRain);
     });
+
+    if(yearEvents.hasOwnProperty(year)){
+        d3.select("#story").text(yearEvents[year]);
+    }
 
 }
 

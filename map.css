@@ -2,7 +2,7 @@ svg {
     background: AliceBlue;
 }
 
-h1,label,p {
+h1, label ,p, div {
     font-family: ‘Courier New’, Courier, monospace;
 }
 
@@ -11,4 +11,8 @@ h1,label,p {
     opacity: .8;
     stroke: #000000;
     stroke-width: .7;
+}
+
+#story {
+    font-weight: bold;
 }
