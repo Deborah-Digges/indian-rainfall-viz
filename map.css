@@ -16,7 +16,3 @@ h1, label ,p, div {
 #story {
     font-weight: bold;
 }
-
-.bottom-right {
-    transform: translate(400, 400);
-}
