@@ -43,7 +43,7 @@ var yearEvents = {
 "1970": "Drought Affected areas: Bihar and Rajasthan People affected: 17.2 million",
 "1972": "Drought Affected areas: Rajasthan, Himachal and Uttar Pradesh. People affected: 50 million",
 "1979": "Drought Affected areas: Eastern Rajasthan, Himachal Pradesh, Punjab and Uttar Pradesh. People affected: 200 million",
-"1987": "The drought of 1987 was caused by the failure of the SW monsoons over large parts of India. Affected Areas: Entire North-West and Eastern India",
+"1987": "The drought of 1987 was caused by the failure of the SW monsoons over large parts of India. At the same time, areas in eastern India including  Bihar, West Bengal and Assam experienced heavy flooding.",
 "1992": "Drought Affected areas: Rajasthan, Orissa, Gujarat, Bihar and Madhya Pradesh. People affected: Figures not available",
-"2000": "Drought Affected areas: Rajasthan, Gujarat, Orissa, Andhra and MP. People affected: Over 100 million "
+"2000": "50 million people were affected in the states of Gujarat, Rajasthan and Maharashtra in the west and Andra Pradesh in the south. More than 60 cities and 60,000 villages had been hit."
 };
