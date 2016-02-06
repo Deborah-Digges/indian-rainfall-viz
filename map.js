@@ -169,9 +169,9 @@ function updateMap(year) {
     });
 
     if(yearEvents.hasOwnProperty(year)){
-        d3.select("#story").text(yearEvents[year]);
+        d3.select("#story").html(yearEvents[year]);
     } else {
-        d3.select("#story").text("");
+        d3.select("#story").html("&nbsp;");
     }
 
 }
