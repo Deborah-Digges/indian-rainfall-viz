@@ -19,6 +19,9 @@ var startYear;
 var endYear;
 var colorScale;
 
+/*
+    Draws the inital map from the GeoJSON
+*/
 function drawMap() {
     d3.json("data/states.json", function (json) {
         india.selectAll("path")
@@ -32,12 +35,22 @@ function drawMap() {
     proj.translate([-1240, 720]);
 }
 
+/*
+    Loads the Rainfall Data and initiates its processing
+*/
 function loadData() {
     d3.csv("data/data.csv", function(rainfallData) {
         processData(rainfallData);
     });
 }
 
+/*
+    Computes
+    1. Index of data based on year
+    2. Min and Max Rainfall across all years
+    3. Min and Max for the range input
+    4. Scale for mapping annual rainfall to a colour
+*/
 function processData(rainfallData) {
     computeYearlyIndex(rainfallData);
     computeMinMax(rainfallData);
@@ -45,6 +58,23 @@ function processData(rainfallData) {
     computeScale();
 }
 
+/*
+    Creates an index of this form:
+
+    {
+        year1: {
+                 state1: annualRainfall1,
+                 ..
+                 stateN: annualRainfallN
+              }
+              .
+              .
+              .
+        yearN: {
+
+               }
+    }
+*/
 function computeYearlyIndex(rainfallData) {
     console.log(rainfallData);
     for(var i=0; i<rainfallData.length; ++i) {
@@ -61,6 +91,12 @@ function computeYearlyIndex(rainfallData) {
 
 }
 
+/*
+    Computes:
+    1. Maximum annual ranifall over all years
+    2. Minimum annual rainfall over all years
+    3. Start and end year for the visualization
+*/
 function computeMinMax(rainfallData) {
     minAnnualRainfall = d3.min(rainfallData, function(d) {return +d.ANNUAL; });
     maxAnnualRainfall = d3.max(rainfallData, function(d) {return +d.ANNUAL; });
@@ -70,24 +106,40 @@ function computeMinMax(rainfallData) {
     endYear = d3.max(rainfallData, function(d) {return +d.YEAR; });
 }
 
+/*
+    Set the start and end year for the input range field for the year
+*/
 function setRangeLimits() {
     d3.select("#year")
     .attr("max", endYear)
     .attr("min", startYear);
 }
 
+/*
+    Maps from a value of annual rainfall to a CSS class
+    The CSS classes .q0-11 - .q10-11 form a divergent scale
+    with .q0-11 representing the lowest values of rainfall(darkest red)
+    and .q10-11 representing the highest values of rainfall(darkest blue)
+*/
 function computeScale() {
     colorScale = d3.scale.quantize()
                     .domain([minAnnualRainfall, maxAnnualRainfall])
                     .range(d3.range(11).map(function(i) { return "q" + i + "-11"; }));
 }
 
+/*
+    When the range input changes, update the map according to the data for that year
+*/
 function setUpCallBacks() {
     d3.select("#year").on("change", function(){
         updateMap(this.value);
     });
 }
 
+/*
+    Each region on the present day map corresponds to one or more regions on the olden day map
+    We need to sum across all the regions that the current region corresponds to.
+*/
 function computeRainfall(d, year) {
     var totalRegionRain = 0;
 
@@ -97,6 +149,11 @@ function computeRainfall(d, year) {
     }
     return totalRegionRain;
 }
+
+/*  
+    Change the CSS class of each region on the map based on the total annual rainfall
+    for that region
+*/
 function updateMap(year) {
     d3.select("#yearlabel").text("Year:  " + year);
 
@@ -107,7 +164,6 @@ function updateMap(year) {
     });
 
 }
-
 
 function initialize() {
     drawMap();
