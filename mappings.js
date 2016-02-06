@@ -1,53 +1,35 @@
 
 /*
-    Mapping from the state names in the original data to the state names on the modern daty map
-    1. One Region Name in the data can correspond to more than one states; 
-       hence the need for a list value
-    2. Multiple Regions in the data can correspond to the same state. For example: West Rajasthan and 
-       East Rajasthan both correspond to Rajasthan
+    Mapping from the state names in the modern day map to the state names in the original data 
 */
 var stateMappings = {
-    "COSTAL ANDHRA PRADESH": ["Andhra Pradesh"],
-    "RAYALSEEMA": ["Andhra Pradesh"],
-    "TELENGANA": ["Andhra Pradesh"],
-    "ARUNACHAL PRADESH": ["Arunachal Pradesh"],
-    "ASSAM & MEGHALAYA": ["Assam", "Meghalaya"],
-    "BIHAR" : ["Bihar"],
-    "CHATTISGARH": ["Chhattisgarh"],
-    "KOKAN & GOA": ["Goa"],
-    "GUJARAT REGION, DADRA & NAGAR HAVELI": ["Gujarat"],
-    "HARYANA, DELHI & CHANDIGARH": ["Haryana", "Delhi"],
-    "HIMACHAL PRADESH": ["Himachal Pradesh"],
-    "JAMMU & KASHMIR": ["Jammu and Kashmir"],
-    "JHARKHAND": ["Jharkhand"],
-    "COASTAL KARNATAKA": ["Karnataka"],
-    "NORTH INTERIOR KARNATAKA": ["Karnataka"],
-    "SOUTH INTERIOR KARNATAKA": ["Karnataka"],
-    "KERALA": ["Kerala"],
-    "WEST MADHYA PRADESH": ["Madhya Pradesh"],
-    "EAST MADHYA PRADESH": ["Madhya Pradesh"],
-    "MADHYA MAHARASHTRA": ["Maharashtra"],
-    "MARATWADA": ["Maharashtra"],
-    "VIDARBHA": ["Maharashtra"],
-    "NAGALAND, MANIPUR, MIZORAM,TRIPURA": ["Nagaland", "Manipur", "Mizoram", "Tripura"],
-    "ORISSA": ["Orissa"],
-    "PUNJAB": ["Punjab"],
-    "WEST RAJASTHAN": ["Rajasthan"],
-    "EAST  RAJASTHAN": ["Rajasthan"],
-    "SAURASHTRA KUTCH & DIU", ["Rajasthan"],
-    "SUB-HIMALAYAN W BENGAL & SIKKIM": ["Sikkim", "West Bengal"],
-    "GANGETIC WEST BENGAL": ["West Bengal"],
-    "TAMIL NADU & PONDICHERRY": ["Tamil Nadu"],
-
-    "EAST UTTAR PRADESH": ["Uttar Pradesh"],
-    "WEST UTTAR PRADESH": ["Uttar Pradesh"],
-    "UTTARANCHAL": ["Uttaranchal"]
+    "Andhra Pradesh": ["COSTAL ANDHRA PRADESH", "RAYALSEEMA", "TELENGANA"],
+    "Arunachal Pradesh": ["ARUNACHAL PRADESH"],
+    "Assam": ["ASSAM & MEGHALAYA"],
+    "Meghalaya": ["ASSAM & MEGHALAYA"],
+    "Bihar" : ["BIHAR"],
+    "Chhattisgarh": ["CHATTISGARH"],
+    "Goa": ["KOKAN & GOA"],
+    "Gujarat": ["GUJARAT REGION, DADRA & NAGAR HAVELI"],
+    "Haryana": ["HARYANA, DELHI & CHANDIGARH"],
+    "Delhi": ["HARYANA, DELHI & CHANDIGARH"],
+    "Himachal Pradesh": ["HIMACHAL PRADESH"],
+    "Jammu and Kashmir": ["JAMMU & KASHMIR"],
+    "Jharkhand": ["JHARKHAND"],
+    "Karnataka": ["COASTAL KARNATAKA", "NORTH INTERIOR KARNATAKA", "SOUTH INTERIOR KARNATAKA"],
+    "Kerala": ["KERALA"],
+    "Madhya Pradesh": ["WEST MADHYA PRADESH", "EAST MADHYA PRADESH"],
+    "Maharashtra": ["MADHYA MAHARASHTRA", "MARATWADA", "VIDARBHA"],
+    "Nagaland": ["NAGALAND, MANIPUR, MIZORAM,TRIPURA"],
+    "Manipur": ["NAGALAND, MANIPUR, MIZORAM,TRIPURA"],
+    "Mizoram": ["NAGALAND, MANIPUR, MIZORAM,TRIPURA"],
+    "Tripura": ["NAGALAND, MANIPUR, MIZORAM,TRIPURA"],
+    "Orissa": ["ORISSA"],
+    "Punjab": ["PUNJAB"],
+    "Rajasthan": ["WEST RAJASTHAN", "EAST  RAJASTHAN", "SAURASHTRA KUTCH & DIU"],
+    "Sikkim": ["SUB-HIMALAYAN W BENGAL & SIKKIM"],
+    "West Bengal": ["SUB-HIMALAYAN W BENGAL & SIKKIM", "GANGETIC WEST BENGAL"],
+    "Tamil Nadu": ["TAMIL NADU & PONDICHERRY"],
+    "Uttar Pradesh": ["EAST UTTAR PRADESH", "WEST UTTAR PRADESH"],
+    "Uttaranchal": ["UTTARANCHAL"]
 };
-
-/*
-    Islands are not currently shown on the map
-*/ 
-var noMappings = [
-    "ANDAMAN & NICOBAR ISLANDS",
-    "LAKSHADWEEP"
-];
