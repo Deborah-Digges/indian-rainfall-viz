@@ -17,6 +17,7 @@ var maxAnnualRainfall;
 var minAnnualRainfall;
 var startYear;
 var endYear;
+var colorScale;
 
 function drawMap() {
     d3.json("data/states.json", function (json) {
@@ -41,6 +42,7 @@ function processData(rainfallData) {
     computeYearlyIndex(rainfallData);
     computeMinMax(rainfallData);
     setRangeLimits();
+    computeScale();
 }
 
 function computeYearlyIndex(rainfallData) {
@@ -74,10 +76,20 @@ function setRangeLimits() {
     .attr("min", startYear);
 }
 
+function computeScale() {
+    colorScale = d3.scale.quantize()
+                    .domain([minAnnualRainfall, maxAnnualRainfall])
+                    .range(d3.range(11).map(function(i) { return "q" + i + "-11"; });
+}
+
 function setUpCallBacks() {
     d3.select("#year").on("change", function(){
-        console.log(this.value);
+        updateMap(this.value);
     });
+}
+
+function updateMap(year) {
+
 }
 
 
