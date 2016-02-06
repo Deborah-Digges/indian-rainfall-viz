@@ -13,8 +13,9 @@ var india = map.append("svg:g")
 .attr("id", "india");
 
 var yearlyDataDict = {};
-var yearEvents = { "1960" : "Something awful happened"};
+var yearlyDataDictMap = {}
 
+var maxTotalRegionRain = 0;
 var maxAnnualRainfall;
 var minAnnualRainfall;
 var startYear;
@@ -84,9 +85,9 @@ function computeYearlyIndex(rainfallData) {
     console.log(rainfallData);
     for(var i=0; i<rainfallData.length; ++i) {
         record = rainfallData[i];
-        year = record["YEAR"];
-        state = record["SD_Name"];
-        annualRainfall = record["ANNUAL"];
+        year = record["YEAR"].trim();
+        state = record["SD_Name"].trim();
+        annualRainfall = record["ANNUAL"].trim();
 
         if(!yearlyDataDict.hasOwnProperty(year)) {
             yearlyDataDict[year] = {};
@@ -126,7 +127,7 @@ function setRangeLimits() {
     with .q0-11 representing the lowest values of rainfall(darkest red)
     and .q10-11 representing the highest values of rainfall(darkest blue)
 */
-function computeScale() {
+function computeScale(min, max) {
     colorScale = d3.scale.quantize()
                     .domain([minAnnualRainfall, maxAnnualRainfall])
                     .range(d3.range(11).map(function(i) { return "q" + i + "-11"; }));
@@ -147,11 +148,16 @@ function setUpCallBacks() {
 */
 function computeRainfall(d, year) {
     var totalRegionRain = 0;
+    
 
     for(var i=0; i<stateMappings[d.id].length; ++i) {
         stateName = stateMappings[d.id][i]
         totalRegionRain += yearlyDataDict[year][stateName];
+        if(maxTotalRegionRain < totalRegionRain) {
+            maxTotalRegionRain = totalRegionRain;
+        }
     }
+    computeScale(minAnnualRainfall, maxTotalRegionRain);
     return totalRegionRain;
 }
 
