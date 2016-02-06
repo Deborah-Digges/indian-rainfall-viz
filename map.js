@@ -79,7 +79,7 @@ function setRangeLimits() {
 function computeScale() {
     colorScale = d3.scale.quantize()
                     .domain([minAnnualRainfall, maxAnnualRainfall])
-                    .range(d3.range(11).map(function(i) { return "q" + i + "-11"; });
+                    .range(d3.range(11).map(function(i) { return "q" + i + "-11"; }));
 }
 
 function setUpCallBacks() {
@@ -89,6 +89,10 @@ function setUpCallBacks() {
 }
 
 function updateMap(year) {
+    console.log(year);
+
+    india.selectAll('path')
+    .attr("fill", function(d) { console.log(d.id);});
 
 }
 
