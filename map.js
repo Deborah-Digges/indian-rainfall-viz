@@ -12,18 +12,20 @@ var map = d3.select("#chart").append("svg:svg")
 var india = map.append("svg:g")
 .attr("id", "india");
 
-d3.json("data/states.json", function (json) {
-    india.selectAll("path")
-    .data(json.features)
-    .enter().append("path")
-    .attr("d", path)
-    .append("svg:title")
-    .text(function(d) { return d.id; });
+function drawMap() {
+    d3.json("data/states.json", function (json) {
+        india.selectAll("path")
+        .data(json.features)
+        .enter().append("path")
+        .attr("d", path)
+        .append("svg:title")
+        .text(function(d) { return d.id; });
+    });
 
-});
-
+}
 
 function initialize() {
+    drawMap();
     proj.scale(6700);
     proj.translate([-1240, 720]);
 }
