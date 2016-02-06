@@ -21,11 +21,21 @@ function drawMap() {
         .append("svg:title")
         .text(function(d) { return d.id; });
     });
+    proj.scale(6700);
+    proj.translate([-1240, 720]);
+}
 
+function processData(rainfallData) {
+    console.log(rainfallData);
+}
+
+function loadData() {
+    d3.csv("data/data.csv", function(rainfallData) {
+        processData(rainfallData);
+    });
 }
 
 function initialize() {
     drawMap();
-    proj.scale(6700);
-    proj.translate([-1240, 720]);
+    loadData();
 }
