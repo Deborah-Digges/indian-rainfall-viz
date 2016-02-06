@@ -1,5 +1,7 @@
 # Visualization of Indian Rainfall Data
 
+"Above all else, show the data" -- Edward Tufte
+
 ## Data Source
 This data was provided by the [Open Government Data(OGD) Platform India](https://data.gov.in/keywords/annual-rainfall). 
 
