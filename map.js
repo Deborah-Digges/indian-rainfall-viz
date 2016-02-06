@@ -15,6 +15,8 @@ var india = map.append("svg:g")
 var yearlyDataDict = {};
 var maxAnnualRainfall;
 var minAnnualRainfall;
+var startYear;
+var endYear;
 
 function drawMap() {
     d3.json("data/states.json", function (json) {
@@ -27,6 +29,18 @@ function drawMap() {
     });
     proj.scale(6700);
     proj.translate([-1240, 720]);
+}
+
+function loadData() {
+    d3.csv("data/data.csv", function(rainfallData) {
+        processData(rainfallData);
+    });
+}
+
+function processData(rainfallData) {
+    computeYearlyIndex(rainfallData);
+    computeMinMax(rainfallData);
+    setRangeLimits();
 }
 
 function computeYearlyIndex(rainfallData) {
@@ -44,19 +58,31 @@ function computeYearlyIndex(rainfallData) {
     }
 
 }
-function processData(rainfallData) {
-    computeYearlyIndex(rainfallData);
+
+function computeMinMax(rainfallData) {
     minAnnualRainfall = d3.min(rainfallData, function(d) {return +d.ANNUAL; });
     maxAnnualRainfall = d3.max(rainfallData, function(d) {return +d.ANNUAL; });
+    defaultAnnualRainfall = (minAnnualRainfall + maxAnnualRainfall)/2;
+
+    startYear = d3.min(rainfallData, function(d) {return +d.YEAR; });
+    endYear = d3.max(rainfallData, function(d) {return +d.YEAR; });
 }
 
-function loadData() {
-    d3.csv("data/data.csv", function(rainfallData) {
-        processData(rainfallData);
+function setRangeLimits() {
+    d3.select("#year")
+    .attr("max", endYear)
+    .attr("min", startYear);
+}
+
+function setUpCallBacks() {
+    d3.select("#year").on("change", function(){
+        console.log(this.value);
     });
 }
+
 
 function initialize() {
     drawMap();
     loadData();
+    setUpCallBacks();
 }
