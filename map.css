@@ -1,0 +1,10 @@
+svg {
+    background: AliceBlue;
+}
+
+#india {
+    fill: FloralWhite;
+    opacity: .8;
+    stroke: #000000;
+    stroke-width: .7;
+}
