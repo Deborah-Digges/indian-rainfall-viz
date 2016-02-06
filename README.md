@@ -6,6 +6,6 @@ This data was provided by the [Open Government Data(OGD) Platform India](https:/
 ## Visualizations (Work In Progress)
 I'm trying to apply a number of visualization techniques to this data set, to see what works and what doesn't.
 
-1.  [Chloropleth](https://github.com/Deborah-Digges/indian-rainfall-viz/tree/master/chloropleth)
+### 1.  [Chloropleth](https://github.com/Deborah-Digges/indian-rainfall-viz/tree/master/chloropleth)
 
 I've used a chloropleth to show the annual rainfall across each state of India using a divergent scale of red and blue. 
