@@ -45,6 +45,7 @@ function loadData() {
     d3.csv("data/data.csv", function(rainfallData) {
         processData(rainfallData);
         drawLegend();
+        updateMap(startYear);
     });
 }
 
