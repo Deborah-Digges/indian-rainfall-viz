@@ -175,6 +175,8 @@ function updateMap(year) {
 
 function drawLegend() {
     var legend = d3.select("#india")
+                .append("g")
+                .attr("transform", "translate(400, 400)")
                 .selectAll('g.legendEntry')
                 .data(colorScale.range())
                 .enter()
