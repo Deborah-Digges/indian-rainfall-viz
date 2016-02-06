@@ -98,7 +98,7 @@ function computeRainfall(d, year) {
     return totalRegionRain;
 }
 function updateMap(year) {
-    d3.select("#yearlabel").text("Year:" + year);
+    d3.select("#yearlabel").text("Year:  " + year);
 
     india.selectAll('path')
     .attr("class", function(d) { 

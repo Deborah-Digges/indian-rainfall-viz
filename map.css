@@ -2,7 +2,7 @@ svg {
     background: AliceBlue;
 }
 
-h1,label {
+h1,label,p {
     font-family: ‘Courier New’, Courier, monospace;
 }
 
