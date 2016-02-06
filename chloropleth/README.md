@@ -17,3 +17,10 @@ A divergent scale, with blue and red at the two ends of the scale, is used. This
 ### Annotation of events
 
 Additionally, I've tried to annotate the map with the major events that happened in the corresponding years. Source: [Outlook India](http://www.outlookindia.com/article/india-the-history-of-drought/209341).
+
+
+### Preview
+
+![Chloropleth](../img/chloropleth.png)
+
+See the visualization here: 
