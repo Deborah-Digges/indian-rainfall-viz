@@ -88,11 +88,23 @@ function setUpCallBacks() {
     });
 }
 
+function computeRainfall(d, year) {
+    var totalRegionRain = 0;
+
+    for(var i=0; i<stateMappings[d.id].length; ++i) {
+        stateName = stateMappings[d.id][i]
+        totalRegionRain += yearlyDataDict[year][stateName];
+    }
+    return totalRegionRain;
+}
 function updateMap(year) {
-    console.log(year);
+    d3.select("#yearlabel").text("Year:" + year);
 
     india.selectAll('path')
-    .attr("fill", function(d) { console.log(d.id);});
+    .attr("class", function(d) { 
+        totalRain = computeRainfall(d, year);
+        return colorScale(totalRain);
+    });
 
 }
 

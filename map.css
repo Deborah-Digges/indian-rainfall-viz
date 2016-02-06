@@ -2,6 +2,10 @@ svg {
     background: AliceBlue;
 }
 
+h1,label {
+    font-family: ‘Courier New’, Courier, monospace;
+}
+
 #india {
     fill: FloralWhite;
     opacity: .8;
