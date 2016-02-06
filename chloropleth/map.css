@@ -16,3 +16,8 @@ h1, label ,p, div {
 #story {
     font-weight: bold;
 }
+
+.legend {
+   font-size: 11px;
+
+}

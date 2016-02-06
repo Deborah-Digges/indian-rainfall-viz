@@ -183,6 +183,11 @@ function updateMap(year) {
 }
 
 function drawLegend() {
+    var legendHeading = d3.select("#india")
+                .append("text")
+                .attr("transform", "translate(400, 400)")
+                .text("Annual Rainfall in mm");
+
     var legend = d3.select("#india")
                 .append("g")
                 .attr("transform", "translate(400, 400)")
