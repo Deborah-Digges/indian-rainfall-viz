@@ -20,6 +20,7 @@ var minAnnualRainfall;
 var startYear;
 var endYear;
 var colorScale;
+var text;
 
 /*
     Draws the inital map from the GeoJSON
@@ -43,6 +44,7 @@ function drawMap() {
 function loadData() {
     d3.csv("data/data.csv", function(rainfallData) {
         processData(rainfallData);
+        drawLegend();
     });
 }
 
@@ -168,6 +170,51 @@ function updateMap(year) {
     if(yearEvents.hasOwnProperty(year)){
         d3.select("#story").text(yearEvents[year]);
     }
+
+}
+
+function drawLegend() {
+    var legend = d3.select("#india")
+                .selectAll('g.legendEntry')
+                .data(colorScale.range())
+                .enter()
+                .append('g');
+
+    legend
+    .append('rect')
+    .attr("x", "10px")
+    .attr("y", function(d, i) {
+    return i * 15;
+    })
+    .attr("width", 10)
+    .attr("height", 10)
+    .style("stroke", "black")
+    .style("stroke-width", 1)
+    .attr("class", function(d){return d;});
+
+
+    if(!text){
+        text = legend
+        .append('text');
+    }
+
+    text
+    .attr("x", "25px")
+    .attr("y", function(d, i) {
+    return i * 15;
+    })
+    .transition()
+    .duration(100)
+    .style("opacity", 0)
+    .transition().duration(500)
+    .style("opacity", 1)
+    .attr("dy", "0.8em")
+        .text(function(d,i) {
+        var extent = colorScale.invertExtent(d);
+
+        var format = d3.format("0.0f");
+        return format(+extent[0]) + " - " + format(+extent[1]);
+    });
 
 }
 
