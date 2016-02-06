@@ -1,6 +1,6 @@
 # Chloropleth
 
-A chloropleth is a map in which areas are shaded in proportion to the statistical variable being measured. 
+A chloropleth is a map in which areas are shaded in proportion to the statistical variable being measured. See the visualization [here](http://deborah-digges.github.io/indian-rainfall-viz/chloropleth/). 
 
 ### Variable being measured
 
@@ -22,5 +22,3 @@ Additionally, I've tried to annotate the map with the major events that happened
 ### Preview
 
 ![Chloropleth](../img/chloropleth.png)
-
-See the visualization here: 
