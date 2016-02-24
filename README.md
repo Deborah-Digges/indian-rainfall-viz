@@ -1,7 +1,7 @@
 # Visualization of Indian Rainfall Data
 
 "Above all else, show the data" -- Edward Tufte
-Multiple visualization techniques applied to indian rainfall dataset.
+Multiple visualization techniques applied to indian rainfall dataset. This is a part of the project for [Udacity's course on Data Visualization using D3](https://www.udacity.com/course/data-visualization-and-d3js--ud507).
 
 ## Data Source
 This data was provided by the [Open Government Data(OGD) Platform India](https://data.gov.in/keywords/annual-rainfall). 
