@@ -14,5 +14,5 @@ I'm trying to apply a number of visualization techniques to this data set, to se
 
 I've used a chloropleth to show the annual rainfall across each state of India using a divergent scale of red and blue. 
 
-### 2. [Cartogram](http://deborah-digges.github.io/indian-rainfall-viz/chloropleth/)
+### 2. [Cartogram](http://deborah-digges.github.io/indian-rainfall-viz/cartogram/)
 A cartogram is a map in which a quantitative variable is substituted for land area or distance. I've used a cartogram to show how rainfall varies across the Indian subcontinent.
