@@ -1,12 +1,8 @@
+// Projection of the indian subcontinent
 var proj = d3.geo.mercator().center([78, 27])
             .scale(1200);
 
-var map = d3.select("#map").call(function() {});
-
-var zoom = d3.behavior.zoom()
-        .translate([-38, 32])
-        .scale(200)
-        .scaleExtent([0.5, 10.0]);
+var map = d3.select("#map");
 
 var layer = map.append("g")
         .attr("id", "layer");
@@ -19,7 +15,11 @@ var carto = d3.cartogram()
                 .projection(proj)
                 .value(function(d) {return Math.random() * 2000});
 
+var topology;
+var geometries;
+
 d3.json("india_topology.json", function(topo) {
+
     topology = topo;
     geometries = topology.objects.states.geometries;
 
@@ -28,8 +28,8 @@ d3.json("india_topology.json", function(topo) {
     path = d3.geo.path().projection(proj);
 
     states = states.data(features)
-          .enter()
-          .append("path")
+            .enter()
+            .append("path")
             .attr("class", "state")
             .attr("id", function(d) {
               return d.properties.NAME;
@@ -40,10 +40,14 @@ d3.json("india_topology.json", function(topo) {
     reset = function(){
 
           alert("change cartogram");
+
+          // Update the cartogram values
           carto.value(function(d) {return Math.random() * 1000});
           
+          // Obtain the features from the new cartogram object
           var features = carto(topology, geometries).features;
 
+          // update the svg with these features
           states.data(features)
           .transition()
           .duration(750)
